@@ -1,28 +1,28 @@
 #include "main.h"
 /**
  * obtain_precision - Calculates the printing precision
- * @frmat: Formatted string specified to print the arguments
+ * @format: Formatted string specified to print the arguments
  * @i: List of arguments to be printed.
  * @list: list of arguments.
  *
  * Return: Precision.
  */
-int obtain_precision(const char *frmat, int *i, va_list list)
+int obtain_precision(const char *format, int *i, va_list list)
 {
 	int curr_i = *i + 1;
 	int precision = -1;
 
-	if (frmat[curr_i] != '.')
+	if (format[curr_i] != '.')
 		return (precision);
 	precision = 0;
-	for (curr_i += 1; frmat[curr_i] != '\0'; curr_i++)
+	for (curr_i += 1; format[curr_i] != '\0'; curr_i++)
 	{
-		if (is_digit(frmat[curr_i]))
+		if (is_digit(format[curr_i]))
 		{
 			precision *= 10;
-			precision += frmat[curr_i] - '0';
+			precision += format[curr_i] - '0';
 		}
-		else if (frmat[curr_i] == '*')
+		else if (format[curr_i] == '*')
 		{
 			curr_i++;
 			precision = va_arg(list, int);

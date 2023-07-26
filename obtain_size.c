@@ -1,19 +1,19 @@
 #include "main.h"
 /**
  * obtain_size - Calculates the argument casting size
- * @frmat: Formatted string specified to print the arguments
+ * @format: Formatted string specified to print the arguments
  * @i: List of arguments to be printed.
  *
  * Return: Precision.
  */
-int obtain_size(const char *frmat, int *i)
+int obtain_size(const char *format, int *i)
 {
 	int curr_i = *i + 1;
 	int size = 0;
 
-	if (frmat[curr_i] == 'l')
+	if (format[curr_i] == 'l')
 		size = SZ_LONG;
-	else if (frmat[curr_i] == 'h')
+	else if (format[curr_i] == 'h')
 		size = SZ_SHORT;
 
 	if (size == 0)
