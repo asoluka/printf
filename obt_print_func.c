@@ -24,7 +24,7 @@ va_list list, char buff[], int flags, int wdth, int precisn, int size)
 		{'R', prt_a_rot13string}, {'\0', NULL}};
 	for (i = 0; fmt_types[i].fmt != '\0'; i++)
 		if (fmt[*ind] == fmt_types[i].fmt)
-			return (fmt_types[i].fn(lst, buff, flags, wdth, precisn, size));
+			return (fmt_types[i].fn(list, buff, flags, wdth, precisn, size));
 	if (fmt_types[i].fmt == '\0')
 	{
 		if (fmt[*ind] == '\0')

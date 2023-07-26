@@ -77,7 +77,7 @@ int flags, int width, int precision, int size)
 }
 
 /**
- * print_number - Write a number using a bufffer
+ * prnt_numbr - Write a number using a bufffer
  * @ind: Index at which the number starts on the buff
  * @buff: Buffer
  * @flgs: Flags
@@ -89,7 +89,7 @@ int flags, int width, int precision, int size)
  *
  * Return: Number of printed chars.
  */
-int print_number(int ind, char buff[], int flgs, int wdth,
+int prnt_numbr(int ind, char buff[], int flgs, int wdth,
 int prec, int lngth, char padd, char extra_charactr)
 {
 	int i, padd_start = 1;
