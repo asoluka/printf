@@ -59,21 +59,21 @@ int print_number(int is_negatv, int ind, char buffer[],
 int flags, int width, int precision, int size)
 {
 	int lngth = BUFF_SIZE - ind - 1;
-	char padd = ' ', extra_charactr = 0;
+	char padd = ' ', extra_c = 0;
 
 	UNUSED(size);
 
 	if ((flags & FUNC_ZERO) && !(flags & FUNC_MINUS))
 		padd = '0';
 	if (is_negatv)
-		extra_charactr = '-';
+		extra_c = '-';
 	else if (flags & FUNC_PLUS)
-		extra_charactr = '+';
+		extra_c = '+';
 	else if (flags & FUNC_SPACE)
-		extra_charactr = ' ';
+		extra_c = ' ';
 
 	return (print_num(ind, buffer, flags, width, precision,
-		lngth, padd, extra_charactr));
+		lngth, padd, extra_c));
 }
 
 /**
@@ -85,12 +85,12 @@ int flags, int width, int precision, int size)
  * @prec: Precision indicator
  * @lngth: Number lngth
  * @padd: Pading char
- * @extra_charactr: Extra char
+ * @extra_c: Extra char
  *
  * Return: Number of printed chars.
  */
 int print_num(int ind, char buffer[], int flags, int width,
-int prec, int lngth, char padd, char extra_charactr)
+int prec, int lngth, char padd, char extra_c)
 {
 	int i, padd_start = 1;
 
@@ -103,7 +103,7 @@ int prec, int lngth, char padd, char extra_charactr)
 		padd = ' ';
 	while (prec > lngth)
 		buffer[--ind] = '0', lngth++;
-	if (extra_charactr != 0)
+	if (extra_c != 0)
 		lngth++;
 	if (width > lngth)
 	{
@@ -112,26 +112,26 @@ int prec, int lngth, char padd, char extra_charactr)
 		buffer[i] = '\0';
 		if (flags & FUNC_MINUS && padd == ' ')
 		{
-			if (extra_charactr)
-				buffer[--ind] = extra_charactr;
+			if (extra_c)
+				buffer[--ind] = extra_c;
 			return (write(1, &buffer[ind], lngth) + write(1, &buffer[1], i - 1));
 		}
 		else if (!(flags & FUNC_MINUS) && padd == ' ')
 		{
-			if (extra_charactr)
-				buffer[--ind] = extra_charactr;
+			if (extra_c)
+				buffer[--ind] = extra_c;
 			return (write(1, &buffer[1], i - 1) + write(1, &buffer[ind], lngth));
 		}
 		else if (!(flags & FUNC_MINUS) && padd == '0')
 		{
-			if (extra_charactr)
-				buffer[--padd_start] = extra_charactr;
+			if (extra_c)
+				buffer[--padd_start] = extra_c;
 			return (write(1, &buffer[padd_start], i - padd_start) +
 				write(1, &buffer[ind], lngth - (1 - padd_start)));
 		}
 	}
-	if (extra_charactr)
-		buffer[--ind] = extra_charactr;
+	if (extra_c)
+		buffer[--ind] = extra_c;
 	return (write(1, &buffer[ind], lngth));
 }
 
@@ -199,13 +199,13 @@ int flags, int width, int precision, int size)
  * @width: Width indicator
  * @flags: Flags indicator
  * @padd: Char representing the padding
- * @extra_charactr: Char representing extra char
+ * @extra_c: Char representing extra char
  * @padd_start: Index at which padding should start
  *
  * Return: Number of written chars.
  */
 int print_pointer(char buffer[], int ind, int lngth,
-int width, int flags, char padd, char extra_charactr, int padd_start)
+int width, int flags, char padd, char extra_c, int padd_start)
 {
 	int i;
 
@@ -218,8 +218,8 @@ int width, int flags, char padd, char extra_charactr, int padd_start)
 		{
 			buffer[--ind] = 'x';
 			buffer[--ind] = '0';
-			if (extra_charactr)
-				buffer[--ind] = extra_charactr;
+			if (extra_c)
+				buffer[--ind] = extra_c;
 			return (write(1, &buffer[ind], lngth) + write(1, &buffer[3], i - 3));
 		}
 		else if
@@ -227,14 +227,14 @@ int width, int flags, char padd, char extra_charactr, int padd_start)
 		{
 			buffer[--ind] = 'x';
 			buffer[--ind] = '0';
-			if (extra_charactr)
-				buffer[--ind] = extra_charactr;
+			if (extra_c)
+				buffer[--ind] = extra_c;
 			return (write(1, &buffer[3], i - 3) + write(1, &buffer[ind], lngth));
 		}
 		else if (!(flags & FUNC_MINUS) && padd == '0')
 		{
-			if (extra_charactr)
-				buffer[--padd_start] = extra_charactr;
+			if (extra_c)
+				buffer[--padd_start] = extra_c;
 			buffer[1] = '0';
 			buffer[2] = 'x';
 			return (write(1, &buffer[padd_start], i - padd_start) +
@@ -244,8 +244,8 @@ int width, int flags, char padd, char extra_charactr, int padd_start)
 	buffer[--ind] = 'x';
 	buffer[--ind] = '0';
 
-	if (extra_charactr)
-		buffer[--ind] = extra_charactr;
+	if (extra_c)
+		buffer[--ind] = extra_c;
 
 	return (write(1, &buffer[ind], BUFF_SIZE - ind - 1));
 }
