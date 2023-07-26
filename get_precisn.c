@@ -2,29 +2,29 @@
 /**
  * get_precisn - Calculates the printing precision
  * @frmat: Formatted string specified to print the arguments
- * @a: List of arguments to be printed.
+ * @i: List of arguments to be printed.
  * @lst: list of arguments.
  *
  * Return: Precision.
  */
-int get_precisn(const char *frmat, int *a, va_list lst)
+int get_precisn(const char *frmat, int *i, va_list lst)
 {
-	int current_a = *a + 1;
+	int curr_i = *i + 1;
 	int precisn = -1;
 
-	if (frmat[current_a] != '.')
+	if (frmat[curr_i] != '.')
 		return (precisn);
 	precisn = 0;
-	for (current_a += 1; frmat[current_a] != '\0'; current_a++)
+	for (curr_i += 1; frmat[curr_i] != '\0'; curr_i++)
 	{
-		if (is_digit(frmat[current_a]))
+		if (is_digit(frmat[curr_i]))
 		{
 			precisn *= 10;
-			precisn += frmat[current_a] - '0';
+			precisn += frmat[curr_i] - '0';
 		}
-		else if (frmat[current_a] == '*')
+		else if (frmat[curr_i] == '*')
 		{
-			current_a++;
+			curr_i++;
 			precisn = va_arg(lst, int);
 			break;
 		}
@@ -32,7 +32,7 @@ int get_precisn(const char *frmat, int *a, va_list lst)
 			break;
 	}
 
-	*a = current_a - 1;
+	*i = curr_i - 1;
 
 	return (precisn);
 }

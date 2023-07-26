@@ -9,19 +9,19 @@
  */
 int handle_f_width(const char *frmat, int *a, va_list lst)
 {
-	int current_a;
+	int curr_a;
 	int width = 0;
 
-	for (current_a = *a + 1; frmat[current_a] != '\0'; current_a++)
+	for (curr_a = *a + 1; frmat[curr_a] != '\0'; curr_a++)
 	{
-		if (is_digit(frmat[current_a]))
+		if (is_digit(frmat[curr_a]))
 		{
 			width *= 10;
-			width += frmat[current_a] - '0';
+			width += frmat[curr_a] - '0';
 		}
-		else if (frmat[current_a] == '*')
+		else if (frmat[curr_a] == '*')
 		{
-			current_a++;
+			curr_a++;
 			width = va_arg(lst, int);
 			break;
 		}
@@ -29,7 +29,7 @@ int handle_f_width(const char *frmat, int *a, va_list lst)
 			break;
 	}
 
-	*a = current_a - 1;
+	*a = curr_a - 1;
 
 	return (width);
 }

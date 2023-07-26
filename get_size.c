@@ -2,23 +2,23 @@
 /**
  * get_size - Calculates the argument casting size
  * @frmat: Formatted string specified to print the arguments
- * @a: List of arguments to be printed.
+ * @i: List of arguments to be printed.
  *
  * Return: Precision.
  */
-int get_size(const char *frmat, int *a)
+int get_size(const char *frmat, int *i)
 {
-	int current_a = *a + 1;
+	int curr_i = *i + 1;
 	int size = 0;
 
-	if (frmat[current_a] == 'l')
+	if (frmat[curr_i] == 'l')
 		size = SZ_LONG;
-	else if (frmat[current_a] == 'h')
+	else if (frmat[curr_i] == 'h')
 		size = SZ_SHORT;
 
 	if (size == 0)
-		*a = current_a - 1;
+		*i = curr_i - 1;
 	else
-		*a = current_a;
+		*i = curr_i;
 	return (size);
 }
