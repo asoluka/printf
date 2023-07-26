@@ -1,12 +1,12 @@
 #include "main.h"
 /**
- * get_size - Calculates the argument casting size
+ * obtain_size - Calculates the argument casting size
  * @frmat: Formatted string specified to print the arguments
  * @i: List of arguments to be printed.
  *
  * Return: Precision.
  */
-int get_size(const char *frmat, int *i)
+int obtain_size(const char *frmat, int *i)
 {
 	int curr_i = *i + 1;
 	int size = 0;

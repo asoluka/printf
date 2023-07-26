@@ -1,13 +1,13 @@
 #include "main.h"
 /**
- * handle_f_width - Calculates the printing width
+ * obtain_width - Calculates the printing width
  * @frmat: Formatted string specified to print the arguments.
  * @i: List of arguments to be printed.
  * @list: list of arguments.
  *
  * Return: width.
  */
-int handle_f_width(const char *frmat, int *i, va_list list)
+int obtain_width(const char *frmat, int *i, va_list list)
 {
 	int curr_i;
 	int width = 0;

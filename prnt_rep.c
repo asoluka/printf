@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * prnt_rep_char - Prints string
+ * handle_print_char - Prints string
  * @c: char types.
  * @buff: Buffer array to handle print
  * @flags:  Calculates active flags.
@@ -11,7 +11,7 @@
  *
  * Return: Number of printed chars.
  */
-int prnt_rep_char(char c, char buff[],
+int handle_print_char(char c, char buff[],
 int flags, int width, int precision, int size)
 {
 	int i = 0;
