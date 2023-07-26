@@ -12,7 +12,7 @@
  * Return: Number of printed chars.
  */
 int handle_print_char(char c, char buffer[],
-int flags, int width, int precision, int size)
+				  int flags, int width, int precision, int size)
 {
 	int i = 0;
 	char padd = ' ';
@@ -34,12 +34,12 @@ int flags, int width, int precision, int size)
 
 		if (flags & FUNC_MINUS)
 			return (write(1, &buffer[0], 1) +
-				write(1, &buffer[BUFF_SIZE - i - 1], width - 1));
+				   write(1, &buffer[BUFF_SIZE - i - 1], width - 1));
 		else
 			return (write(1, &buffer[BUFF_SIZE - i - 1],
-				width - 1) + write(1, &buffer[0], 1));
+					    width - 1) +
+				   write(1, &buffer[0], 1));
 	}
-
 	return (write(1, &buffer[0], 1));
 }
 
@@ -56,7 +56,7 @@ int flags, int width, int precision, int size)
  * Return: Number of chars printed.
  */
 int print_number(int is_negatv, int ind, char buffer[],
-int flags, int width, int precision, int size)
+			  int flags, int width, int precision, int size)
 {
 	int lngth = BUFF_SIZE - ind - 1;
 	char padd = ' ', extra_charactr = 0;
@@ -71,9 +71,8 @@ int flags, int width, int precision, int size)
 		extra_charactr = '+';
 	else if (flags & FUNC_SPACE)
 		extra_charactr = ' ';
-
 	return (print_num(ind, buffer, flags, width, precision,
-		lngth, padd, extra_charactr));
+				   lngth, padd, extra_charactr));
 }
 
 /**
@@ -86,16 +85,14 @@ int flags, int width, int precision, int size)
  * @lngth: Number lngth
  * @padd: Pading char
  * @extra_charactr: Extra char
- *
  * Return: Number of printed chars.
  */
 int print_num(int ind, char buffer[], int flags, int width,
-int prec, int lngth, char padd, char extra_charactr)
+		    int prec, int lngth, char padd, char extra_charactr)
 {
 	int i, padd_start = 1;
 
 	if (prec == 0 && ind == BUFF_SIZE - 2 && buffer[ind] == '0' && width == 0)
-
 		return (0);
 	if (prec == 0 && ind == BUFF_SIZE - 2 && buffer[ind] == '0')
 		buffer[ind] = padd = ' ';
@@ -127,7 +124,7 @@ int prec, int lngth, char padd, char extra_charactr)
 			if (extra_charactr)
 				buffer[--padd_start] = extra_charactr;
 			return (write(1, &buffer[padd_start], i - padd_start) +
-				write(1, &buffer[ind], lngth - (1 - padd_start)));
+				   write(1, &buffer[ind], lngth - (1 - padd_start)));
 		}
 	}
 	if (extra_charactr)
@@ -144,11 +141,10 @@ int prec, int lngth, char padd, char extra_charactr)
  * @width: Width indicator
  * @precision: Precision indicator
  * @size: Size indicator
- *
  * Return: Number of written chars.
  */
 int print_unsgnd(int is_negatv, int ind, char buffer[],
-int flags, int width, int precision, int size)
+			  int flags, int width, int precision, int size)
 {
 	int lngth = BUFF_SIZE - ind - 1, i = 0;
 	char padd = ' ';
@@ -187,7 +183,6 @@ int flags, int width, int precision, int size)
 			return (write(1, &buffer[0], i) + write(1, &buffer[ind], lngth));
 		}
 	}
-
 	return (write(1, &buffer[ind], lngth));
 }
 
@@ -205,7 +200,7 @@ int flags, int width, int precision, int size)
  * Return: Number of written chars.
  */
 int print_pointer(char buffer[], int ind, int lngth,
-int width, int flags, char padd, char extra_charactr, int padd_start)
+			   int width, int flags, char padd, char extra_charactr, int padd_start)
 {
 	int i;
 
@@ -222,8 +217,7 @@ int width, int flags, char padd, char extra_charactr, int padd_start)
 				buffer[--ind] = extra_charactr;
 			return (write(1, &buffer[ind], lngth) + write(1, &buffer[3], i - 3));
 		}
-		else if
-			(!(flags & FUNC_MINUS) && padd == ' ')
+		else if (!(flags & FUNC_MINUS) && padd == ' ')
 		{
 			buffer[--ind] = 'x';
 			buffer[--ind] = '0';
@@ -238,14 +232,12 @@ int width, int flags, char padd, char extra_charactr, int padd_start)
 			buffer[1] = '0';
 			buffer[2] = 'x';
 			return (write(1, &buffer[padd_start], i - padd_start) +
-				write(1, &buffer[ind], lngth - (1 - padd_start) - 2));
+				   write(1, &buffer[ind], lngth - (1 - padd_start) - 2));
 		}
 	}
 	buffer[--ind] = 'x';
 	buffer[--ind] = '0';
-
 	if (extra_charactr)
 		buffer[--ind] = extra_charactr;
-
 	return (write(1, &buffer[ind], BUFF_SIZE - ind - 1));
 }
