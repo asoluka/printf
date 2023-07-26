@@ -1,83 +1,83 @@
 #include "main.h"
 
 /**
- * rep_prnt_char - Prints string
+ * prnt_rep_char - Prints string
  * @c: char types.
  * @buff: Buffer array to handle print
- * @flgs:  Calculates active flags.
- * @wdth: get width.
- * @precisn: precision indicator
+ * @flags:  Calculates active flags.
+ * @width: get width.
+ * @precision: precision indicator
  * @size: Size indicator
  *
  * Return: Number of printed chars.
  */
-int rep_prnt_char(char c, char buff[],
-int flgs, int wdth, int precisn, int size)
+int prnt_rep_char(char c, char buff[],
+int flags, int width, int precision, int size)
 {
 	int i = 0;
 	char padd = ' ';
 
-	UNUSED(precisn);
+	UNUSED(precision);
 	UNUSED(size);
 
-	if (flgs & FUNC_ZERO)
+	if (flags & FUNC_ZERO)
 		padd = '0';
 
 	buff[i++] = c;
 	buff[i] = '\0';
 
-	if (wdth > 1)
+	if (width > 1)
 	{
 		buff[BUFF_SIZE - 1] = '\0';
-		for (i = 0; i < wdth - 1; i++)
+		for (i = 0; i < width - 1; i++)
 			buff[BUFF_SIZE - i - 2] = padd;
 
-		if (flgs & FUNC_MINUS)
+		if (flags & FUNC_MINUS)
 			return (write(1, &buff[0], 1) +
-				write(1, &buff[BUFF_SIZE - i - 1], wdth - 1));
+				write(1, &buff[BUFF_SIZE - i - 1], width - 1));
 		else
 			return (write(1, &buff[BUFF_SIZE - i - 1],
-				wdth - 1) + write(1, &buff[0], 1));
+				width - 1) + write(1, &buff[0], 1));
 	}
 
 	return (write(1, &buff[0], 1));
 }
 
 /**
- * prnt_num - Prints a string
+ * print_number - Prints a string
  * @is_negatv: List of arguments
  * @ind: char types.
  * @buff: Buffer array to handle print
- * @flgs:  Calculates active flags
- * @wdth: get wdth.
- * @precisn: precision indicator
+ * @flags:  Calculates active flags
+ * @width: get wdth.
+ * @precision: precision indicator
  * @size: Size indicator
  *
  * Return: Number of chars printed.
  */
-int prnt_num(int is_negatv, int ind, char buff[],
-int flgs, int wdth, int precisn, int size)
+int print_number(int is_negatv, int ind, char buff[],
+int flags, int width, int precision, int size)
 {
 	int lngth = BUFF_SIZE - ind - 1;
 	char padd = ' ', extra_charactr = 0;
 
 	UNUSED(size);
 
-	if ((flgs & FUNC_ZERO) && !(flgs & FUNC_MINUS))
+	if ((flags & FUNC_ZERO) && !(flags & FUNC_MINUS))
 		padd = '0';
 	if (is_negatv)
 		extra_charactr = '-';
-	else if (flgs & FUNC_PLUS)
+	else if (flags & FUNC_PLUS)
 		extra_charactr = '+';
-	else if (flgs & FUNC_SPACE)
+	else if (flags & FUNC_SPACE)
 		extra_charactr = ' ';
 
-	return (print_num(ind, buff, flgs, wdth, precisn,
+	return (print_num(ind, buff, flags, width, precision,
 		lngth, padd, extra_charactr));
 }
 
 /**
- * print_num - Write a number using a bufffer
+ * print_number - Write a number using a bufffer
  * @ind: Index at which the number starts on the buff
  * @buff: Buffer
  * @flgs: Flags
@@ -89,7 +89,7 @@ int flgs, int wdth, int precisn, int size)
  *
  * Return: Number of printed chars.
  */
-int print_num(int ind, char buff[], int flgs, int wdth,
+int print_number(int ind, char buff[], int flgs, int wdth,
 int prec, int lngth, char padd, char extra_charactr)
 {
 	int i, padd_start = 1;
@@ -136,7 +136,7 @@ int prec, int lngth, char padd, char extra_charactr)
 }
 
 /**
- * prnt_unsigned - Writes an unsigned number
+ * print_unsgnd - Writes an unsigned number
  * @is_negatv: Number indicating if the num is negative
  * @ind: Index at which the number starts in the buff
  * @buff: Array of chars
@@ -147,7 +147,7 @@ int prec, int lngth, char padd, char extra_charactr)
  *
  * Return: Number of written chars.
  */
-int prnt_unsigned(int is_negatv, int ind, char buff[],
+int print_unsgnd(int is_negatv, int ind, char buff[],
 int flgs, int wdth, int precisn, int size)
 {
 	int lngth = BUFF_SIZE - ind - 1, i = 0;
@@ -192,7 +192,7 @@ int flgs, int wdth, int precisn, int size)
 }
 
 /**
- * prnt_pointr - Write a memory address
+ * print_pointer - Write a memory address
  * @buff: Arrays of chars
  * @ind: Index at which the number starts in the buff
  * @lngth: Length of number
@@ -204,7 +204,7 @@ int flgs, int wdth, int precisn, int size)
  *
  * Return: Number of written chars.
  */
-int prnt_pointr(char buff[], int ind, int lngth,
+int print_pointer(char buff[], int ind, int lngth,
 int wdth, int flgs, char padd, char extra_charactr, int padd_start)
 {
 	int i;

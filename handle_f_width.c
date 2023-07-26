@@ -2,34 +2,34 @@
 /**
  * handle_f_width - Calculates the printing width
  * @frmat: Formatted string specified to print the arguments.
- * @a: List of arguments to be printed.
- * @lst: lst of arguments.
+ * @i: List of arguments to be printed.
+ * @list: list of arguments.
  *
  * Return: width.
  */
-int handle_f_width(const char *frmat, int *a, va_list lst)
+int handle_f_width(const char *frmat, int *i, va_list list)
 {
-	int curr_a;
+	int curr_i;
 	int width = 0;
 
-	for (curr_a = *a + 1; frmat[curr_a] != '\0'; curr_a++)
+	for (curr_i = *i + 1; frmat[curr_i] != '\0'; curr_i++)
 	{
-		if (is_digit(frmat[curr_a]))
+		if (is_digit(frmat[curr_i]))
 		{
 			width *= 10;
-			width += frmat[curr_a] - '0';
+			width += frmat[curr_i] - '0';
 		}
-		else if (frmat[curr_a] == '*')
+		else if (frmat[curr_i] == '*')
 		{
-			curr_a++;
-			width = va_arg(lst, int);
+			curr_i++;
+			width = va_arg(list, int);
 			break;
 		}
 		else
 			break;
 	}
 
-	*a = curr_a - 1;
+	*i = curr_i - 1;
 
 	return (width);
 }

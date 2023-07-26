@@ -2,7 +2,7 @@
 /**
  * obt_print_func - Prints a type-based argument.
  * @fmt: Formatted string specified to print the arguments.
- * @lst: List of arguments to be printed.
+ * @list: List of arguments to be printed.
  * @ind: ind.
  * @buff: Buffer array for print handling.
  * @flags: Calculates the active flags
@@ -12,7 +12,7 @@
  * Return: 1 or 2;
  */
 int obt_print_func(const char *fmt, int *ind,
-va_list lst, char buff[], int flags, int wdth, int precisn, int size)
+va_list list, char buff[], int flags, int wdth, int precisn, int size)
 {
 	int i, uniden_length = 0, printed_chars = -1;
 
