@@ -116,7 +116,7 @@ int prec, int lngth, char padd, char extra_charactr)
 				buff[--ind] = extra_charactr;
 			return (write(1, &buff[ind], lngth) + write(1, &buff[1], i - 1));
 		}
-		else if (!(flgs & FUNC_MIN) && padd == ' ')
+		else if (!(flgs & FUNC_MINUS) && padd == ' ')
 		{
 			if (extra_charactr)
 				buff[--ind] = extra_charactr;
@@ -153,8 +153,8 @@ int flgs, int wdth, int precisn, int size)
 	int lngth = BUFF_SIZE - ind - 1, i = 0;
 	char padd = ' ';
 
-	UNUSD(is_negatv);
-	UNUSD(size);
+	UNUSED(is_negatv);
+	UNUSED(size);
 
 	if (precisn == 0 && ind == BUFF_SIZE - 2 && buff[ind] == '0')
 		return (0);
@@ -178,7 +178,7 @@ int flgs, int wdth, int precisn, int size)
 
 		buff[i] = '\0';
 
-		if (flgs & FUNC_MIN)
+		if (flgs & FUNC_MINUS)
 		{
 			return (write(1, &buff[ind], lngth) + write(1, &buff[0], i));
 		}
