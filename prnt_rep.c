@@ -1,17 +1,16 @@
 #include "main.h"
 
-/************************* LOG REP *************************/
 /**
-* rep_prnt_char - Prints string
-* @c: char types.
-* @buff: Buffer array to handle print
-* @flgs:  Calculates active flags.
-* @wdth: get width.
-* @precisn: precision indicator
-* @size: Size indicator
-*
-* Return: Number of printed chars.
-*/
+ * rep_prnt_char - Prints string
+ * @c: char types.
+ * @buff: Buffer array to handle print
+ * @flgs:  Calculates active flags.
+ * @wdth: get width.
+ * @precisn: precision indicator
+ * @size: Size indicator
+ *
+ * Return: Number of printed chars.
+ */
 int rep_prnt_char(char c, char buff[],
 int flgs, int wdth, int precisn, int size)
 {
@@ -44,19 +43,18 @@ int flgs, int wdth, int precisn, int size)
 	return (write(1, &buff[0], 1));
 }
 
-/************************* LOG NUMBER *************************/
 /**
-* prnt_num - Prints a string
-* @is_negatv: List of arguments
-* @ind: char types.
-* @buff: Buffer array to handle print
-* @flgs:  Calculates active flags
-* @wdth: get wdth.
-* @precisn: precision indicator
-* @size: Size indicator
-*
-* Return: Number of chars printed.
-*/
+ * prnt_num - Prints a string
+ * @is_negatv: List of arguments
+ * @ind: char types.
+ * @buff: Buffer array to handle print
+ * @flgs:  Calculates active flags
+ * @wdth: get wdth.
+ * @precisn: precision indicator
+ * @size: Size indicator
+ *
+ * Return: Number of chars printed.
+ */
 int prnt_num(int is_negatv, int ind, char buff[],
 int flgs, int wdth, int precisn, int size)
 {
@@ -79,18 +77,18 @@ int flgs, int wdth, int precisn, int size)
 }
 
 /**
-* print_num - Write a number using a bufffer
-* @ind: Index at which the number starts on the buff
-* @buff: Buffer
-* @flgs: Flags
-* @wdth: wdth
-* @prec: Precision indicator
-* @lngth: Number lngth
-* @padd: Pading char
-* @extra_charactr: Extra char
-*
-* Return: Number of printed chars.
-*/
+ * print_num - Write a number using a bufffer
+ * @ind: Index at which the number starts on the buff
+ * @buff: Buffer
+ * @flgs: Flags
+ * @wdth: wdth
+ * @prec: Precision indicator
+ * @lngth: Number lngth
+ * @padd: Pading char
+ * @extra_charactr: Extra char
+ *
+ * Return: Number of printed chars.
+ */
 int print_num(int ind, char buff[], int flgs, int wdth,
 int prec, int lngth, char padd, char extra_charactr)
 {
@@ -138,17 +136,17 @@ int prec, int lngth, char padd, char extra_charactr)
 }
 
 /**
-* prnt_unsigned - Writes an unsigned number
-* @is_negatv: Number indicating if the num is negative
-* @ind: Index at which the number starts in the buff
-* @buff: Array of chars
-* @flgs: Flags indicators
-* @wdth: Width indicator
-* @precisn: Precision indicator
-* @size: Size indicator
-*
-* Return: Number of written chars.
-*/
+ * prnt_unsigned - Writes an unsigned number
+ * @is_negatv: Number indicating if the num is negative
+ * @ind: Index at which the number starts in the buff
+ * @buff: Array of chars
+ * @flgs: Flags indicators
+ * @wdth: Width indicator
+ * @precisn: Precision indicator
+ * @size: Size indicator
+ *
+ * Return: Number of written chars.
+ */
 int prnt_unsigned(int is_negatv, int ind, char buff[],
 int flgs, int wdth, int precisn, int size)
 {
@@ -194,18 +192,18 @@ int flgs, int wdth, int precisn, int size)
 }
 
 /**
-* prnt_pointr - Write a memory address
-* @buff: Arrays of chars
-* @ind: Index at which the number starts in the buff
-* @lngth: Length of number
-* @wdth: Width indicator
-* @flgs: Flags indicator
-* @padd: Char representing the padding
-* @extra_charactr: Char representing extra char
-* @padd_start: Index at which padding should start
-*
-* Return: Number of written chars.
-*/
+ * prnt_pointr - Write a memory address
+ * @buff: Arrays of chars
+ * @ind: Index at which the number starts in the buff
+ * @lngth: Length of number
+ * @wdth: Width indicator
+ * @flgs: Flags indicator
+ * @padd: Char representing the padding
+ * @extra_charactr: Char representing extra char
+ * @padd_start: Index at which padding should start
+ *
+ * Return: Number of written chars.
+ */
 int prnt_pointr(char buff[], int ind, int lngth,
 int wdth, int flgs, char padd, char extra_charactr, int padd_start)
 {

@@ -1,12 +1,12 @@
 #include "main.h"
 /**
-* handle_f_width - Calculates the printing width
-* @frmat: Formatted string specified to print the arguments.
-* @a: List of arguments to be printed.
-* @lst: lst of arguments.
-*
-* Return: width.
-*/
+ * handle_f_width - Calculates the printing width
+ * @frmat: Formatted string specified to print the arguments.
+ * @a: List of arguments to be printed.
+ * @lst: lst of arguments.
+ *
+ * Return: width.
+ */
 int handle_f_width(const char *frmat, int *a, va_list lst)
 {
 	int current_a;
