@@ -60,9 +60,9 @@ int its_a_digit(char c)
  */
 long int change_size_number(long int number, int size)
 {
-	if (size == LONG_SIZE)
+	if (size == SZ_LONG)
 		return (number);
-	else if (size == SHORT_SIZE)
+	else if (size == SZ_SHORT)
 		return ((short)number);
 
 	return ((int)number);
@@ -77,9 +77,9 @@ long int change_size_number(long int number, int size)
  */
 long int convert_size_unsgnd(unsigned long int number, int size)
 {
-	if (size == LONG_SIZE)
+	if (size == SZ_LONG)
 		return (number);
-	else if (size == SHORT_SIZE)
+	else if (size == SZ_SHORT)
 		return ((unsigned short)number);
 
 	return ((unsigned int)number);

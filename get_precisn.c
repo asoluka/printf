@@ -3,7 +3,7 @@
  * get_precisn - Calculates the printing precision
  * @frmat: Formatted string specified to print the arguments
  * @a: List of arguments to be printed.
- * @lst: list of arguments.
+ * @list: list of arguments.
  *
  * Return: Precision.
  */
@@ -25,7 +25,7 @@ int get_precisn(const char *frmat, int *a, va_list lst)
 		else if (frmat[current_a] == '*')
 		{
 			current_a++;
-			precisn = variable_argmt(lst, int);
+			precisn = va_arg(list, int);
 			break;
 		}
 		else

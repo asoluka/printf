@@ -12,9 +12,9 @@ int get_size(const char *frmat, int *a)
 	int size = 0;
 
 	if (frmat[current_a] == 'l')
-		size = LONG_SIZE;
+		size = SZ_LONG;
 	else if (frmat[current_a] == 'h')
-		size = SHORT_SIZE;
+		size = SZ_SHORT;
 
 	if (size == 0)
 		*a = current_a - 1;

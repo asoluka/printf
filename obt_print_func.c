@@ -16,17 +16,16 @@ va_list lst, char buff[], int flags, int wdth, int precisn, int size)
 {
 	int i, uniden_length = 0, printed_chars = -1;
 
-	frmat_t [] = {{'c', prnt_a_char}, {'s', prnt_a_string}, {'%', prnt_a_percent},
-		{'i', prnt_a_int}, {'d', prnt_a_int}, {'b', prnt_a_binary},
-		{'u', prnt_a_unsigned}, {'o', prnt_a_octal}, {'x', prnt_a_hexadecimal},
-		{'X', prnt_a_hexa_upper}, {'p', prnt_a_pointer}, {'S', prnt_a_non_printable},
-		{'r', prnt_a_reverse}, {'R', prnt_a_rot13string}, {'\0', NULL}};
-	for (i = 0;
-			[i].frmat != '\0'; i++)
-		if (frmat[*ind] ==
-				[i].frmat)
-			return ([i].fn(lst, buff, flags, wdth, precisn, size));
-	if ([i].frmat == '\0')
+	frmat_t frmat_types [] = {{'c', prnt_a_char}, {'s', prnt_a_string},
+		{'%', prnt_a_percent}, {'i', prnt_a_int}, {'d', prnt_a_int},
+		{'b', prnt_a_binary}, {'u', prnt_a_unsigned}, {'o', prnt_a_octal},
+		{'x', prnt_a_hexadecimal}, {'X', prnt_a_hexa_upper}, {'p', prnt_a_pointer},
+		{'S', prnt_a_non_printable}, {'r', prnt_a_reverse},
+		{'R', prnt_a_rot13string}, {'\0', NULL}};
+	for (i = 0; frmat_types[i].frmat != '\0'; i++)
+		if (frmat[*ind] == frmat_types[i].frmat)
+			return (frmat_types[i].fn(lst, buff, flags, wdth, precisn, size));
+	if (frmat_types[i].frmat == '\0')
 	{
 		if (frmat[*ind] == '\0')
 			return (-1);

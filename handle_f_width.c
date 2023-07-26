@@ -3,7 +3,7 @@
  * handle_f_width - Calculates the printing width
  * @frmat: Formatted string specified to print the arguments.
  * @a: List of arguments to be printed.
- * @lst: lst of arguments.
+ * @list: lst of arguments.
  *
  * Return: width.
  */
@@ -22,8 +22,8 @@ int handle_f_width(const char *frmat, int *a, va_list lst)
 		else if (frmat[current_a] == '*')
 		{
 			current_a++;
-			width = variable_argmt(lst, int);
-			break
+			width = va_arg(list, int);
+			break;
 		}
 		else
 			break;
